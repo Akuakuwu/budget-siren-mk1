@@ -1,0 +1,34 @@
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, sans-serif; color: #242424; background: #fff; }
+main { max-width: 960px; margin: 40px auto; padding: 0 24px; }
+h1 { margin: 0; font-size: clamp(1.75rem, 5vw, 2.25rem); line-height: 1.2; }
+p { margin: 10px 0 20px; }
+.controls, .settings { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+button, select, .upload { font: inherit; color: inherit; background: #f5f5f5; border: 1px solid #aaa; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+button:hover, select:hover, .upload:hover { background-color: #eaeaea; }
+select { appearance: none; padding-right: 28px; background-image: linear-gradient(45deg, transparent 50%, #555 50%), linear-gradient(135deg, #555 50%, transparent 50%); background-position: right 13px center, right 8px center; background-size: 5px 5px; background-repeat: no-repeat; }
+#file { position: absolute; width: 1px; height: 1px; opacity: 0; }
+:focus-visible, .upload:has(+ #file:focus-visible) { outline: 2px solid #205ab0; outline-offset: 2px; }
+#status { margin: 8px 0 20px; font-size: 0.875rem; color: #555; overflow-wrap: anywhere; }
+.views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.heading { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.heading h2 { margin: 0; font-size: 1rem; }
+.heading span, .axis { font-size: 0.875rem; color: #555; }
+.screen, .chart { height: clamp(210px, 32vw, 315px); }
+.screen, #signalCanvas { overflow: hidden; background: #121417; border-radius: 3px; }
+.chart { display: grid; grid-template-columns: 40px minmax(0, 1fr); }
+.chart:has(.axis[hidden]) { grid-template-columns: minmax(0, 1fr); }
+.axis { display: flex; flex-direction: column; justify-content: space-between; line-height: 1; }
+.axis[hidden] { display: none; }
+#signalCanvas { position: relative; }
+canvas { display: block; }
+#signalCanvas canvas { position: absolute; inset: 0; }
+.settings { margin-top: 16px; column-gap: 20px; row-gap: 12px; }
+.settings > div { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; }
+.settings input { width: clamp(72px, 10vw, 130px); }
+output { white-space: nowrap; font-variant-numeric: tabular-nums; }
+@media (max-width: 650px) {
+  main { margin: 24px auto; padding: 0 16px; }
+  .views { grid-template-columns: 1fr; }
+  .screen { height: auto; aspect-ratio: 4 / 3; }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Scan an image line by line and see its pixel values mapped to 1500–2300 Hz.Slightly Weaker Than a Whale.">
+  <title>Budget Siren Mk. I</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="p5.min.js"></script>
+  <script defer src="scanner.js"></script>
+</head>
+<body>
+<main>
+  <h1>Budget Siren Mk. I</h1>
+  <p>Scan an image line by line and see its pixel values mapped to 1500–2300 Hz.Slightly Weaker Than a Whale.</p>
+
+  <div class="controls" role="group" aria-label="Scan controls">
+    <button id="play" disabled>Start</button>
+    <button id="reset">Reset</button>
+    <label class="upload" for="file">Open image</label>
+    <input type="file" id="file" accept="image/*">
+  </div>
+  <p id="status" role="status">Open an image to begin.</p>
+
+  <div class="views">
+    <section>
+      <div class="heading"><h2>Image</h2><span id="line">Row 1 of 192</span></div>
+      <div id="imageCanvas" class="screen" role="img" aria-label="Input image with a scan line"></div>
+    </section>
+    <section>
+      <div class="heading"><h2>Signal</h2><span>Frequency in Hz</span></div>
+      <div class="chart">
+        <div class="axis" aria-hidden="true"><span>2300</span><span>2100</span><span>1900</span><span>1700</span><span>1500</span></div>
+        <div id="signalCanvas" role="img" aria-label="Virtual frequencies for the current row"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="settings" role="group" aria-label="Scan settings">
+    <div><label for="seek">Position</label><input id="seek" type="range" min="0" max="191" value="0"><output id="percent" for="seek">0%</output></div>
+    <div><label for="rate">Speed</label><input id="rate" type="range" min="2" max="60" value="16"><output id="rateValue" for="rate">16 rows/s</output></div>
+    <div><label for="mode">View</label><select id="mode"><option value="bars">Bars</option><option value="strip">Color strip</option><option value="wave">Waveform</option></select></div>
+    <div><label for="channel">Channel</label><select id="channel"><option value="y">Brightness</option><option value="r">Red</option><option value="g">Green</option><option value="b">Blue</option><option value="rgb">RGB</option></select></div>
+  </div>
+</main>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5f3944a2c767abc',t:'MTc5NTQ3MjYxNg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5f3944a2c767abc',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
